@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- ссылка на css -->
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+
+	<title>2</title>
+</head>
+<body>
+
+	<!-- CDN - vue.js v2 - для разработки -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+
+	<!-- Изменяем текст при нажатии на другой текст -->
+	<div id="app">
+		<!-- 
+		'v-' означает что работа для vue
+		'on' отслеживем событие 
+		cliсk - название события
+		"title = 'Изменённый текст при нажатии'" - изменеям параметр title - на другой текст (будет происходить при нажатии на "Текст")
+		-->
+		<span @click= "title = 'Изменённый текст при нажатии'">Нажми на Текст</span>
+		<p>{{ title }}</p>
+	</div>
+
+
+<hr>
+
+	<!-- Изменяем текст при нажатии на другой текст -->
+	<div id="app2">
+		<span @mouseover= "title = 'Изменённый текст при наведении'">Наведи на текст</span>
+		<p>{{ title }}</p>
+	</div>
+
+<hr>
+
+	<!-- свой обработчик события во vue -->
+	<div id="app3">
+		<!-- на событие mouseover - вашаем обработчик changeText -->
+		<span @mouseover='changeText'>Наведи на текст</span>
+		<p>{{ txt }}</p>
+	</div>
+
+
+
+
+
+
+<hr>
+
+	<!-- работаем с html аттрибутами - меняем цвет фона -->
+	<div id="app4">
+		<!-- на событие mouseover - вашаем обработчик changeText -->
+		<!-- 
+			v-bind:  -  работаем с аттрибутом во vue
+			class=  -  аттрибут html class
+			'styleCSS'   - вставляем в аттрибут значение объекта Vue
+		-->	
+		<p :class="styleCSS">Цвет: {{ styleCSS }}</p>
+		<!-- или <p v-bind:class="styleCSS">Цвет: {{ styleCSS }}</p> -->
+
+		<!-- событие input, в styleCSS, присваиваем новое значение -->
+		<!-- значение будет локальной переменной DOM дерева -->
+		<!-- здесь в поле input меняем значение аттрибута styleCSS -->
+		<input type="text" v-on:input="styleCSS = $event.target.value">
+	</div>
+
+
+
+
+	<!-- свой js файй -->
+	<script src="js/main.js"></script>
+</body>
+</html>
