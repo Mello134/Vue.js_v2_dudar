@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- ссылка на css -->
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+	<title>4</title>
+</head>
+<body>
+	<!-- CDN - vue.js v2 - для разработки -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+	<!-- скрываем и показываем текст -->
+	<div id='app'>
+		<!--
+			v-on:click= событие Vue - click
+			'show = !show'  - меняем show на false или наоборот на true
+		-->	
+		<button v-on:click='show = !show'>Скрыть/показать</button>
+
+
+		<!--
+			v-if= условынй оператор во Vue
+			show - просто переменная (создадим во Vue)
+			show = true - текст будет виден, false - не виден
+		-->	
+		<p v-if="show">Текст который может стать невидимым</p>
+		<!--
+			else покажет в случае если if выше не сработает
+		-->
+		<p v-else>Текст 2</p>
+	</div>
+
+	<hr>
+
+	<!-- Выводим список из массива -->
+	<div id="listCar">
+		<h3>Одна машмна по идексу</h3>
+		<ul>
+			<li>Выводим третюю в массиве cars модель: {{ cars[2].model }}</li>
+		</ul>
+
+		<hr>	
+
+		<h3>Список машин</h3>
+		<ul>
+			<!-- Перебираем массив и выводим в виде списка модели! -->
+			<li v-for="car in cars">Модель: {{ car.model }}, скорость {{ car.speed }}</li>
+		</ul>
+
+		<hr>
+
+		<h3>Список моделей с индексом</h3>
+		<ul>
+			<li v-for='(car, i) in cars'>{{ i }} - {{ car.model }}</li>
+		</ul>
+	</div>
+
+
+	<!-- ссылка на мой js файл -->
+	<script src="js/main.js"></script>
+</body>
+</html>
